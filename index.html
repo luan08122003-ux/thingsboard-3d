@@ -4,15 +4,33 @@
   <meta charset="UTF-8">
   <title>3D Viewer</title>
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-</head>
-<body style="margin:0; overflow:hidden;">
 
-<model-viewer src="./hethongdongbaooo.glb"
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #000; /* nền đen */
+    }
+
+    model-viewer {
+      width: 100vw;
+      height: 100vh;
+      background: #111; /* nền đen mềm */
+    }
+  </style>
+</head>
+
+<body>
+
+<model-viewer src="./tomau.glb"
     camera-controls
     auto-rotate
+    auto-rotate-delay="0"
     rotation-per-second="20deg"
-    exposure="1"
-    style="width:100vw; height:100vh; background:#eee;">
+    shadow-intensity="1"
+    exposure="1.2"
+    environment-image="neutral"
+    disable-zoom>
 </model-viewer>
 
 </body>

@@ -1,36 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>3D Viewer</title>
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <meta charset="UTF-8" />
+  <title>HeThongDongBao 3D</title>
+
+  <!-- Cho mobile / tablet -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Thư viện model-viewer -->
+  <script type="module"
+          src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+  </script>
 
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
       overflow: hidden;
       background: #000; /* nền đen */
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, sans-serif;
     }
 
     model-viewer {
-      width: 100vw;
-      height: 100vh;
-      background: #111; /* nền đen mềm */
+      width: 100%;
+      height: 100%;
+      background: #000;
+    }
+
+    /* Overlay tiêu đề nhỏ gọn trong góc */
+    .title-bar {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      padding: 6px 12px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 6px;
+      color: #fff;
+      font-size: 13px;
+      z-index: 10;
+      pointer-events: none; /* không chặn thao tác xoay / zoom */
     }
   </style>
 </head>
 
 <body>
 
-<model-viewer src="./tomau.glb"
-    camera-controls
-    auto-rotate
-    auto-rotate-delay="0"
-    rotation-per-second="20deg"
-    shadow-intensity="1"
-    exposure="1.2"
-    environment-image="neutral">
-</model-viewer>
+  <div class="title-bar">
+    HeThongDongBao 3D – <b>tomau.glb</b>
+  </div>
+
+  <!-- Viewer full màn hình -->
+  <model-viewer
+      src="tomau.glb"
+      camera-controls
+      auto-rotate
+      auto-rotate-delay="0"
+      rotation-per-second="20deg"
+      shadow-intensity="1"
+      exposure="1.2"
+      environment-image="neutral"
+      min-camera-orbit="auto auto 20%"   <!-- giới hạn zoom gần -->
+      max-camera-orbit="auto auto 300%"> <!-- giới hạn zoom xa -->
+  </model-viewer>
 
 </body>
 </html>
